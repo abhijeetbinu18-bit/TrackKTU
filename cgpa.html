@@ -56,8 +56,27 @@
       </div>
     </div>
 
+    <div class="planner-panel">
+      <div class="page-headline planner-headline">
+        <div>
+          <div class="title">Target by 8th Semester</div>
+          <p>Set a target CGPA and see the SGPA you need across the remaining semesters.</p>
+        </div>
+      </div>
+
+      <div class="controls planner-controls" style="grid-template-columns: 1fr auto;">
+        <div class="field">
+          <label>Target CGPA</label>
+          <input id="target-cgpa-input" type="number" min="0" max="10" step="0.01" placeholder="8.00">
+        </div>
+        <button class="btn btn-primary" id="calc-target-btn" type="button">Plan Target</button>
+      </div>
+
+      <div class="planner-result" id="target-plan"></div>
+    </div>
+
     <div class="actions" style="margin-top: 16px;">
-      <button class="btn btn-secondary" id="clear-all-btn" type="button">Clear All Saved Grades</button>
+      <button class="btn btn-secondary" id="clear-all-btn" type="button">Reset All Saved Data</button>
       <button class="btn btn-primary" id="calc-cgpa-btn" type="button">Calculate CGPA</button>
     </div>
 
@@ -73,6 +92,10 @@
         <div class="stat-card"><div class="k">Equivalent %</div><div class="v" id="cgpa-percent">--</div></div>
         <div class="stat-card"><div class="k">Scope</div><div class="v" id="cgpa-scope">--</div></div>
       </div>
+    </div>
+
+    <div class="trust-note">
+      Your saved semester data is stored locally in this browser and is not shared with other users.
     </div>
   </section>
 </div>

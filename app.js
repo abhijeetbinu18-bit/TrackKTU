@@ -1127,7 +1127,8 @@ const GRADES = {
     branchId: "ECE",
     semesterId: "s1",
     grades: {},
-    creditOverrides: {}
+    creditOverrides: {},
+    targetGoals: {}
   };
 
   let toastTimer = null;
@@ -1185,6 +1186,14 @@ const GRADES = {
     return state.creditOverrides[keyFor(schemeId, branchId, semesterId)] || {};
   }
 
+  function targetKey(schemeId = state.schemeId, branchId = state.branchId) {
+    return `${schemeId}:${branchId}`;
+  }
+
+  function getTargetGoal(schemeId = state.schemeId, branchId = state.branchId) {
+    return state.targetGoals[targetKey(schemeId, branchId)] ?? "";
+  }
+
   function getCourseCredits(course, schemeId = state.schemeId, branchId = state.branchId, semesterId = state.semesterId) {
     const overrides = getSavedCreditOverrides(schemeId, branchId, semesterId);
     return overrides[course.code] ?? course.credits;
@@ -1221,6 +1230,7 @@ const GRADES = {
       state.semesterId = parsed.semesterId || state.semesterId;
       state.grades = parsed.grades || {};
       state.creditOverrides = parsed.creditOverrides || {};
+      state.targetGoals = parsed.targetGoals || {};
     } catch (error) {
       console.warn("TrackKTU state load failed", error);
     }
@@ -1406,6 +1416,149 @@ const GRADES = {
     card.classList.add("visible");
   }
 
+  function getSemesterGpaCredits(semester, schemeId = state.schemeId, branchId = state.branchId) {
+    return semester.courses.reduce((sum, course) => {
+      if (course.gradeMode === "passfail") return sum;
+      return sum + getCourseCredits(course, schemeId, branchId, semester.id);
+    }, 0);
+  }
+
+  function calculateTargetPlan() {
+    const rawTarget = getTargetGoal();
+    const target = Number(rawTarget);
+    if (!rawTarget && rawTarget !== 0) return null;
+    if (Number.isNaN(target) || target <= 0 || target > 10) {
+      return { error: "Enter a target CGPA between 0 and 10." };
+    }
+
+    const semesters = getSemesters();
+    const completed = semesters
+      .map((semester) => ({ semester, result: calculateSemester(state.schemeId, state.branchId, semester.id) }))
+      .filter((item) => item.result);
+    const remaining = semesters
+      .filter((semester) => !calculateSemester(state.schemeId, state.branchId, semester.id));
+
+    const totalProgramCredits = semesters.reduce((sum, semester) => sum + getSemesterGpaCredits(semester), 0);
+    const earnedPoints = completed.reduce((sum, item) => sum + item.result.points, 0);
+    const completedCredits = completed.reduce((sum, item) => sum + item.result.credits, 0);
+    const remainingCredits = remaining.reduce((sum, semester) => sum + getSemesterGpaCredits(semester), 0);
+    const currentCgpa = completedCredits ? +(earnedPoints / completedCredits).toFixed(2) : 0;
+    const targetPoints = target * totalProgramCredits;
+    const requiredPoints = targetPoints - earnedPoints;
+    const requiredAverage = remainingCredits ? +(requiredPoints / remainingCredits).toFixed(2) : null;
+    const bestPossibleCgpa = remainingCredits
+      ? +((earnedPoints + remainingCredits * 10) / totalProgramCredits).toFixed(2)
+      : currentCgpa;
+
+    return {
+      target,
+      currentCgpa,
+      completedCount: completed.length,
+      totalProgramCredits,
+      completedCredits,
+      remainingCredits,
+      remaining,
+      requiredAverage,
+      bestPossibleCgpa
+    };
+  }
+
+  function renderTargetPlanner() {
+    const input = byId("target-cgpa-input");
+    const container = byId("target-plan");
+    if (!input || !container) return;
+
+    input.value = getTargetGoal();
+    const plan = calculateTargetPlan();
+    if (!plan) {
+      container.innerHTML = `
+        <div class="trust-note planner-empty">
+          Enter a target CGPA to see the average SGPA you need from the remaining semesters.
+        </div>
+      `;
+      return;
+    }
+
+    if (plan.error) {
+      container.innerHTML = `<div class="trust-note planner-empty">${plan.error}</div>`;
+      return;
+    }
+
+    if (!plan.remaining.length) {
+      const status = plan.currentCgpa >= plan.target
+        ? `You have already finished all semesters and reached the target with a CGPA of ${plan.currentCgpa.toFixed(2)}.`
+        : `All semesters are already completed. Your final CGPA is ${plan.currentCgpa.toFixed(2)}, so a target of ${plan.target.toFixed(2)} is no longer reachable.`;
+      container.innerHTML = `<div class="trust-note planner-empty">${status}</div>`;
+      return;
+    }
+
+    if (plan.requiredAverage <= 0) {
+      container.innerHTML = `
+        <div class="planner-summary">
+          <div class="stat-card">
+            <div class="k">Target Status</div>
+            <div class="v">Already secured</div>
+          </div>
+          <div class="stat-card">
+            <div class="k">Current CGPA</div>
+            <div class="v">${plan.currentCgpa.toFixed(2)}</div>
+          </div>
+          <div class="stat-card">
+            <div class="k">Remaining Credits</div>
+            <div class="v">${plan.remainingCredits}</div>
+          </div>
+          <div class="stat-card">
+            <div class="k">Target CGPA</div>
+            <div class="v">${plan.target.toFixed(2)}</div>
+          </div>
+        </div>
+        <div class="trust-note planner-empty">
+          Your current performance already keeps you above the target by the end of Semester 8, even if the remaining semesters only need passing completion.
+        </div>
+      `;
+      return;
+    }
+
+    const impossible = plan.requiredAverage > 10;
+    const summaryLabel = impossible ? "Target not practical" : "Required average SGPA";
+    const summaryValue = impossible ? `${plan.requiredAverage.toFixed(2)} needed` : plan.requiredAverage.toFixed(2);
+
+    container.innerHTML = `
+      <div class="planner-summary">
+        <div class="stat-card">
+          <div class="k">${summaryLabel}</div>
+          <div class="v">${summaryValue}</div>
+        </div>
+        <div class="stat-card">
+          <div class="k">Current CGPA</div>
+          <div class="v">${plan.currentCgpa.toFixed(2)}</div>
+        </div>
+        <div class="stat-card">
+          <div class="k">Remaining Semesters</div>
+          <div class="v">${plan.remaining.length}</div>
+        </div>
+        <div class="stat-card">
+          <div class="k">Remaining Credits</div>
+          <div class="v">${plan.remainingCredits}</div>
+        </div>
+      </div>
+      <div class="planner-copy ${impossible ? "planner-warning" : ""}">
+        ${impossible
+          ? `Even scoring 10.00 in every remaining semester will only take you up to a CGPA of ${plan.bestPossibleCgpa.toFixed(2)}.`
+          : `If you keep roughly the same SGPA in each remaining semester, aim for ${plan.requiredAverage.toFixed(2)} from now until Semester 8.`}
+      </div>
+      <div class="planner-grid">
+        ${plan.remaining.map((semester) => `
+          <article class="planner-card">
+            <div class="semester-title">${semester.title}</div>
+            <div class="course-meta">${getSemesterGpaCredits(semester)} GPA credits</div>
+            <div class="planner-target">${impossible ? "10.00 max" : `${plan.requiredAverage.toFixed(2)} target`}</div>
+          </article>
+        `).join("")}
+      </div>
+    `;
+  }
+
   function renderAll() {
     syncSemester();
     populateSchemes();
@@ -1421,6 +1574,7 @@ const GRADES = {
     if (pageType === "cgpa") {
       renderCgpaSemesterList();
       renderCgpaResult();
+      renderTargetPlanner();
     }
   }
 
@@ -1512,6 +1666,28 @@ const GRADES = {
       }
       renderCgpaResult();
       showToast("CGPA recalculated.");
+    });
+  }
+
+  if (byId("target-cgpa-input")) {
+    byId("target-cgpa-input").addEventListener("input", (event) => {
+      const value = event.target.value;
+      const key = targetKey();
+      if (value === "") {
+        delete state.targetGoals[key];
+      } else {
+        state.targetGoals[key] = value;
+      }
+      saveState();
+      renderTargetPlanner();
+    });
+  }
+
+  if (byId("calc-target-btn")) {
+    byId("calc-target-btn").addEventListener("click", () => {
+      const plan = calculateTargetPlan();
+      renderTargetPlanner();
+      showToast(plan && !plan.error ? "Target plan updated." : "Enter a valid target CGPA first.");
     });
   }
 

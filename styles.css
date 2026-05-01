@@ -292,6 +292,86 @@
     line-height: 1.55;
   }
 
+  .trust-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border: 1px dashed rgba(82, 68, 46, 0.18);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.44);
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .planner-panel {
+    margin-top: 18px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: rgba(255,255,255,0.54);
+  }
+
+  .planner-headline {
+    margin-bottom: 12px;
+  }
+
+  .planner-controls {
+    align-items: end;
+  }
+
+  .planner-result {
+    margin-top: 16px;
+  }
+
+  .planner-summary,
+  .planner-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .planner-summary {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .planner-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 14px;
+  }
+
+  .planner-card {
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.82);
+  }
+
+  .planner-target {
+    margin-top: 12px;
+    font-family: var(--display);
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--blue);
+  }
+
+  .planner-copy {
+    margin-top: 14px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: rgba(53, 90, 154, 0.08);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .planner-warning {
+    background: rgba(154, 116, 64, 0.12);
+  }
+
+  .planner-empty {
+    margin-top: 0;
+  }
+
   .stats,
   .controls,
   .metrics,
@@ -650,7 +730,8 @@
   .semester-card:hover,
   .grade-card:hover,
   .stat-card:hover,
-  .notice:hover {
+  .notice:hover,
+  .trust-note:hover {
     box-shadow: var(--shadow-soft);
   }
 
@@ -699,7 +780,9 @@
     .grade-grid,
     .metrics,
     .semester-top,
-    .portal-grid {
+    .portal-grid,
+    .planner-summary,
+    .planner-grid {
       grid-template-columns: 1fr;
     }
 
@@ -723,6 +806,11 @@
 
     .hero {
       padding: 22px;
+    }
+
+    .topbar .logo {
+      width: 144px;
+      height: 50px;
     }
 
     .portal-card,
