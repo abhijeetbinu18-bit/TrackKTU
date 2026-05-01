@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackKTU - Semester SGPA</title>
+<meta name="description" content="Calculate semester SGPA for KTU with preset subjects, default credits, and a cleaner grade-only workflow.">
+<meta name="theme-color" content="#355a9a">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="sgpa">
+<div class="shell page-stack">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"><img src="trackktu-logo.svg" alt="TrackKTU logo"></div>
+      <div>
+        <div class="eyebrow">TrackKTU</div>
+        <div class="title" style="margin-bottom:0;">Semester SGPA</div>
+      </div>
+    </div>
+    <a class="nav-link" href="index.html">Back Home</a>
+  </header>
+
+  <section class="panel">
+    <div class="page-headline">
+      <div>
+        <h1 style="font-size:clamp(28px,5vw,42px);margin-top:6px;">Fill grades for one semester.</h1>
+        <p>Subjects and default verified credits are already in place.</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="field">
+        <label>Scheme</label>
+        <select id="scheme-select"></select>
+      </div>
+      <div class="field">
+        <label>Branch</label>
+        <select id="branch-select"></select>
+      </div>
+      <div class="field">
+        <label>Semester</label>
+        <select id="semester-select"></select>
+      </div>
+      <div class="field">
+        <label>Total Credits</label>
+        <input id="total-credits" type="text" readonly>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card"><div class="k">Branch</div><div class="v" id="stat-branch">--</div></div>
+      <div class="stat-card"><div class="k">Semester</div><div class="v" id="stat-semester">--</div></div>
+      <div class="stat-card"><div class="k">Subjects</div><div class="v" id="stat-subjects">--</div></div>
+      <div class="stat-card"><div class="k">Grades Filled</div><div class="v" id="stat-filled">--</div></div>
+    </div>
+
+    <div class="course-list" id="course-list"></div>
+
+    <div class="actions">
+      <button class="btn btn-secondary" id="clear-sem-btn" type="button">Clear Semester Grades</button>
+      <button class="btn btn-primary" id="calc-sgpa-btn" type="button">Calculate SGPA</button>
+    </div>
+
+    <div class="result-card" id="sgpa-result">
+      <div class="title">Semester GPA</div>
+      <div class="result-value" id="sgpa-value">--</div>
+      <div id="sgpa-badge"></div>
+      <div class="metrics">
+        <div class="stat-card"><div class="k">Weighted Points</div><div class="v" id="sgpa-points">--</div></div>
+        <div class="stat-card"><div class="k">Credits Counted</div><div class="v" id="sgpa-credits">--</div></div>
+        <div class="stat-card"><div class="k">Completed Entries</div><div class="v" id="sgpa-complete">--</div></div>
+        <div class="stat-card"><div class="k">Scheme / Branch</div><div class="v" id="sgpa-scope">--</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

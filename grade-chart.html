@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackKTU - Grade Chart</title>
+<meta name="description" content="Use the TrackKTU grade chart to check KTU grade points, ranges, and classification quickly.">
+<meta name="theme-color" content="#355a9a">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="ref">
+<div class="shell page-stack">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"><img src="trackktu-logo.svg" alt="TrackKTU logo"></div>
+      <div>
+        <div class="eyebrow">TrackKTU</div>
+        <div class="title" style="margin-bottom:0;">Grade Chart</div>
+      </div>
+    </div>
+    <a class="nav-link" href="index.html">Back Home</a>
+  </header>
+
+  <section class="panel">
+    <div class="page-headline">
+      <div>
+        <h1 style="font-size:clamp(28px,5vw,42px);margin-top:6px;">Keep the grade chart nearby.</h1>
+        <p>Use this page as a quick reference while filling grades.</p>
+      </div>
+    </div>
+
+    <div class="grade-grid">
+      <div class="grade-card"><div class="g">S</div><div class="p">10.0</div></div>
+      <div class="grade-card"><div class="g">A+</div><div class="p">9.0</div></div>
+      <div class="grade-card"><div class="g">A</div><div class="p">8.5</div></div>
+      <div class="grade-card"><div class="g">B+</div><div class="p">8.0</div></div>
+      <div class="grade-card"><div class="g">B</div><div class="p">7.5</div></div>
+      <div class="grade-card"><div class="g">C+</div><div class="p">7.0</div></div>
+      <div class="grade-card"><div class="g">C</div><div class="p">6.5</div></div>
+      <div class="grade-card"><div class="g">D</div><div class="p">6.0</div></div>
+    </div>
+
+    <div class="table-shell">
+      <table>
+        <thead>
+          <tr>
+            <th>Grade</th>
+            <th>Points</th>
+            <th>Range / Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>S</td><td>10</td><td>>= 90%</td></tr>
+          <tr><td>A+</td><td>9.0</td><td>85% - 89%</td></tr>
+          <tr><td>A</td><td>8.5</td><td>80% - 84%</td></tr>
+          <tr><td>B+</td><td>8.0</td><td>75% - 79%</td></tr>
+          <tr><td>B</td><td>7.5</td><td>70% - 74%</td></tr>
+          <tr><td>C+</td><td>7.0</td><td>65% - 69%</td></tr>
+          <tr><td>C</td><td>6.5</td><td>60% - 64%</td></tr>
+          <tr><td>D</td><td>6.0</td><td>55% - 59%</td></tr>
+          <tr><td>P</td><td>5.5</td><td>50% - 54%</td></tr>
+          <tr><td>F / FE / I</td><td>0</td><td>Fail / ineligible / absent</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="resource-grid" style="margin-top:16px;">
+      <div class="notice">
+        <h3>Percentage formula</h3>
+        <p>Equivalent percentage = 10 x CGPA - 2.5</p>
+      </div>
+      <div class="notice">
+        <h3>Classification</h3>
+        <ul>
+          <li>Distinction: CGPA 8.0 and above</li>
+          <li>First Class: CGPA 6.5 to 7.99</li>
+          <li>Pass: CGPA below 6.5</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

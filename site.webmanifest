@@ -1,0 +1,17 @@
+{
+  "name": "TrackKTU",
+  "short_name": "TrackKTU",
+  "description": "KTU SGPA and CGPA planner with preset subjects and credits.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f1ea",
+  "theme_color": "#355a9a",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

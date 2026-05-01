@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackKTU - Overall CGPA</title>
+<meta name="description" content="Track overall KTU CGPA across completed semesters using saved SGPA entries in TrackKTU.">
+<meta name="theme-color" content="#355a9a">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="cgpa">
+<div class="shell page-stack">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"><img src="trackktu-logo.svg" alt="TrackKTU logo"></div>
+      <div>
+        <div class="eyebrow">TrackKTU</div>
+        <div class="title" style="margin-bottom:0;">Overall CGPA</div>
+      </div>
+    </div>
+    <a class="nav-link" href="index.html">Back Home</a>
+  </header>
+
+  <section class="panel">
+    <div class="page-headline">
+      <div>
+        <h1 style="font-size:clamp(28px,5vw,42px);margin-top:6px;">See the overall CGPA build up.</h1>
+        <p>Completed semesters from the same scheme and branch are counted here.</p>
+      </div>
+    </div>
+
+    <div class="controls" style="grid-template-columns:repeat(2, 1fr);">
+      <div class="field">
+        <label>Scheme</label>
+        <select id="scheme-select"></select>
+      </div>
+      <div class="field">
+        <label>Branch</label>
+        <select id="branch-select"></select>
+      </div>
+    </div>
+
+    <div class="semester-top" style="margin-top:16px;">
+      <div class="notice">
+        <h3>Counted here</h3>
+        <p>Only completed semesters are included in the CGPA result.</p>
+      </div>
+      <div class="notice">
+        <h3>Update anytime</h3>
+        <p>Change grades on the semester page and come back here to recalculate.</p>
+      </div>
+    </div>
+
+    <div class="actions" style="margin-top: 16px;">
+      <button class="btn btn-secondary" id="clear-all-btn" type="button">Clear All Saved Grades</button>
+      <button class="btn btn-primary" id="calc-cgpa-btn" type="button">Calculate CGPA</button>
+    </div>
+
+    <div class="semester-list" id="semester-list"></div>
+
+    <div class="result-card" id="cgpa-result">
+      <div class="title">Cumulative GPA</div>
+      <div class="result-value" id="cgpa-value">--</div>
+      <div id="cgpa-badge"></div>
+      <div class="metrics">
+        <div class="stat-card"><div class="k">Completed Semesters</div><div class="v" id="cgpa-completed">--</div></div>
+        <div class="stat-card"><div class="k">Total Credits</div><div class="v" id="cgpa-total-credits">--</div></div>
+        <div class="stat-card"><div class="k">Equivalent %</div><div class="v" id="cgpa-percent">--</div></div>
+        <div class="stat-card"><div class="k">Scope</div><div class="v" id="cgpa-scope">--</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">TrackKTU</title>
+  <desc id="desc">TrackKTU logo</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#355a9a"/>
+      <stop offset="100%" stop-color="#4f7b70"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="64" fill="url(#bg)"/>
+  <circle cx="208" cy="44" r="40" fill="rgba(255,255,255,0.16)"/>
+  <circle cx="28" cy="230" r="24" fill="rgba(255,255,255,0.16)"/>
+  <text x="128" y="138" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="42" font-weight="700" fill="#f8fbff">TrackKTU</text>
+</svg>
