@@ -18,7 +18,7 @@ TrackKTU is a static website for KTU students to check:
 ## Data model
 
 - schemes included: `2024`, `2019`
-- branches included: `ECE`, `CSE`, `CPS`, `IT`, `EEE`, `ME`, `CIVIL`
+- branches included: `ECE`, `CSE`, `CPS`, `IT`, `EEE`, `ME`, `CIVIL`, `CHEM`
 - users mainly enter grades
 - subjects and default credits are preloaded branch-wise and semester-wise
 

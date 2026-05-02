@@ -22,7 +22,8 @@ const GRADES = {
     IT: "Information Technology",
     EEE: "Electrical and Electronics Engineering",
     ME: "Mechanical Engineering",
-    CIVIL: "Civil Engineering"
+    CIVIL: "Civil Engineering",
+    CHEM: "Chemical Engineering"
   };
 
   const KIND_LABELS = {
@@ -778,6 +779,106 @@ const GRADES = {
             verificationLabel: "Verified structure from 2024 Civil curriculum PDF",
             sourceNote: "Semester 8 follows the official Civil semester structure in the mirrored PDF. Elective and project pathways vary per student."
           })
+        ],
+        CHEM: [
+          s("s1", "Semester 1", "https://www.scribd.com/document/894410848/Chemical-Engineering", COMMON_2024_C_S1, {
+            verification: "secondary",
+            verificationLabel: "Matched to mirrored APJAKTU 2024 Chemical curriculum",
+            sourceNote: "Semester 1 follows the APJAKTU B.Tech Chemical Engineering Curriculum 2024 mirror. The public KTU scheme page is JavaScript-rendered, so this is marked as a mirrored official document rather than a direct KTU-hosted PDF."
+          }),
+          s("s2", "Semester 2", "https://www.scribd.com/document/894410848/Chemical-Engineering", [
+            c("GYMAT201", "Mathematics for Physical Science-2", 3),
+            c("GZPHT121/GCCYT122", "Physics for Physical Science / Chemistry for Physical Science", 4),
+            c("GCEST203", "Engineering Graphics and Computer Aided Drawing", 3, "studio"),
+            c("GZEST204", "Basic Electrical & Electronics Engineering", 4),
+            c("PCCHT205", "Process Calculations", 4),
+            c("UCEST206", "Engineering Entrepreneurship & IPR", 3),
+            c("UCHWT127/UCHUT128", "Health and Wellness / Life Skills and Professional Communication", 1, "humanities", { gradeMode: "passfail" }),
+            c("GZESL208", "Basic Electrical and Electronics Engineering Workshop", 1, "workshop"),
+            c("UCSEM129", "Skill Enhancement Course: Digital 101 (NASSCOM)", 1, "audit", { gradeMode: "passfail" })
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to mirrored APJAKTU 2024 Chemical curriculum",
+            sourceNote: "Semester 2 subjects and default credits follow the APJAKTU 2024 Chemical Engineering curriculum mirror. NASSCOM remains in S2 because its credit is officially recorded in the second semester grade card."
+          }),
+          s("s3", "Semester 3", "https://www.scribd.com/document/894410848/Chemical-Engineering", [
+            c("GYMAT301", "Mathematics for Physical Science-3", 3),
+            c("PCCHT302", "Particle Technology", 4),
+            c("PCCHT303", "Chemical Engineering Thermodynamics", 4),
+            c("PBCHT304", "Fluid and Particle Mechanics", 4),
+            c("GNEST305", "Introduction to Artificial Intelligence and Data Science", 4),
+            c("UCHUT346/UCHUT347", "Economics for Engineers / Engineering Ethics and Sustainable Development", 2, "humanities"),
+            c("PCCHL307", "Chemical Technology and Environmental Engineering Lab", 2, "lab"),
+            c("PCCHL308", "Fluid and Particle Mechanics Lab", 2, "lab")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to mirrored APJAKTU 2024 Chemical curriculum",
+            sourceNote: "Semester 3 subjects and credits were transcribed from the APJAKTU 2024 Chemical Engineering curriculum mirror."
+          }),
+          s("s4", "Semester 4", "https://www.scribd.com/document/894410848/Chemical-Engineering", [
+            c("GCMAT401", "Mathematics for Physical Science-4", 3),
+            c("PCCHT402", "Heat Transfer Operations", 4),
+            c("PCCHT403", "Mass Transfer Operation-I", 4),
+            c("PBCHT404", "Environmental Engineering", 4),
+            c("PECHT41N", "PE-1", 3, "elective"),
+            c("UCHUT346/UCHUT347", "Economics for Engineers / Engineering Ethics and Sustainable Development", 2, "humanities"),
+            c("PCCHL407", "Particle Technology Lab", 2, "lab"),
+            c("PCCHL408", "Heat Transfer Operations Lab", 2, "lab")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to mirrored APJAKTU 2024 Chemical curriculum",
+            sourceNote: "Semester 4 is aligned to the APJAKTU 2024 Chemical Engineering curriculum mirror. PE-1 remains generic until the elective is chosen."
+          }),
+          s("s5", "Semester 5", "https://www.scribd.com/document/894410848/Chemical-Engineering", [
+            c("PCCHT501", "Mass Transfer Operation-II", 4),
+            c("PCCHT502", "Chemical Technology", 4),
+            c("PCCHT503", "Chemical Reaction Engineering", 3),
+            c("PBCHT504", "Chemical Engineering Design-I", 4),
+            c("PECHT52N", "PE-2", 3, "elective"),
+            c("UCHUM506", "Constitution of India (MOOC)", 1, "audit", { gradeMode: "passfail" }),
+            c("PCCHL507", "Chemical Reaction Engineering Lab", 2, "lab"),
+            c("PCCHL508", "Mass Transfer Operation Lab", 2, "lab")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to mirrored APJAKTU 2024 Chemical curriculum",
+            sourceNote: "Semester 5 is aligned to the APJAKTU 2024 Chemical Engineering curriculum mirror. PE-2 remains generic until the elective is chosen."
+          }),
+          s("s6", "Semester 6", "https://www.scribd.com/document/894410848/Chemical-Engineering", [
+            c("PCCHT601", "Chemical Engineering Design-II", 4),
+            c("PCCHT602", "Transport Phenomena", 3),
+            c("PECHT63N", "PE-3", 3, "elective"),
+            c("PBCHT604", "Process Dynamics and Control", 4),
+            c("GYEST605", "Design Thinking and Product Development", 2, "design"),
+            c("OECHT61N/IECHT61N", "OE/ILE-1", 3, "elective"),
+            c("PCCHL607", "Process Simulation Lab", 2, "lab"),
+            c("PCCHP608", "Mini Project: Socially Relevant Project", 2, "project")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to mirrored APJAKTU 2024 Chemical curriculum",
+            sourceNote: "Semester 6 matches the APJAKTU 2024 Chemical Engineering curriculum mirror at the structure level. Elective slots remain generic by design."
+          }),
+          s("s7", "Semester 7", "https://www.scribd.com/document/894410848/Chemical-Engineering", [
+            c("PECHT74N/PECHM74N", "PE-4", 3, "elective"),
+            c("PECHT75N/PECHM75N", "PE-5", 3, "elective"),
+            c("OECHT72N/IECHT72N/OECHM72N", "OE/ILE-2", 3, "elective"),
+            c("UEHUT704/UEHUM70N", "University Elective", 2, "humanities"),
+            c("PCCHS705", "Seminar", 2, "project"),
+            c("PCCHP706/PCCHI706", "Major Project / Internship", 4, "project")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to mirrored APJAKTU 2024 Chemical curriculum",
+            sourceNote: "Semester 7 follows the APJAKTU 2024 Chemical Engineering curriculum mirror. Elective and internship pathways vary per student."
+          }),
+          s("s8", "Semester 8", "https://www.scribd.com/document/894410848/Chemical-Engineering", [
+            c("PECHT86N/PECHM86N", "PE-6", 3, "elective"),
+            c("OECHT83N/IECHT83N/OECHM83N", "OE/ILE-3", 3, "elective"),
+            c("UEHUT803/UEHUM803", "Organizational Behavior and Business Communication", 1, "humanities"),
+            c("PCCHP806/PCCHI806/PCCHJ806", "Major Project / Internship / Major Project Phase-II", 4, "project")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to mirrored APJAKTU 2024 Chemical curriculum",
+            sourceNote: "Semester 8 follows the APJAKTU 2024 Chemical Engineering curriculum mirror. Elective and project pathways vary per student."
+          })
         ]
       }
     },
@@ -1095,6 +1196,99 @@ const GRADES = {
             c("CED416", "Project Phase II", 6, "project"),
             c("CED418", "Comprehensive Viva", 2, "viva")
           ])
+        ],
+        CHEM: [
+          s("s1", "Semester 1", "https://ktu.edu.in/academics/scheme", COMMON_2019_S1, {
+            verification: "secondary",
+            verificationLabel: "Aligned to 2019 common first-year curriculum",
+            sourceNote: "Semester 1 uses the common 2019 B.Tech first-year structure. The official KTU scheme endpoint is public but JavaScript-rendered, so the branch-specific audit is tracked through mirrored curriculum references."
+          }),
+          s("s2", "Semester 2", "https://ktu.edu.in/academics/scheme", COMMON_2019_S2, {
+            verification: "secondary",
+            verificationLabel: "Aligned to 2019 common first-year curriculum",
+            sourceNote: "Semester 2 uses the common 2019 B.Tech first-year structure. The official KTU scheme endpoint is public but JavaScript-rendered, so the branch-specific audit is tracked through mirrored curriculum references."
+          }),
+          s("s3", "Semester 3", "https://www.scribd.com/document/547733009/B-tech-2019-Curriculum-NEW", [
+            c("MAT201", "Partial Differential Equation and Complex Analysis", 4),
+            c("CHT201", "Chemistry for Process Engineering", 4),
+            c("CHT203", "Chemical Process Principles", 4),
+            c("CHT205", "Fluid and Particle Mechanics", 4),
+            c("EST200/HUT200", "Design and Engineering / Professional Ethics", 2, "humanities"),
+            c("MCN201", "Sustainable Engineering", 0, "audit", { gradeMode: "passfail" }),
+            c("CHL201", "Chemical Technology & Environmental Engineering Lab", 2, "lab"),
+            c("CHL203", "Chemistry Lab for Process Engineering", 2, "lab")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to mirrored APJAKTU 2019 Chemical curriculum",
+            sourceNote: "Semester 3 subjects and credits follow the APJAKTU B.Tech 2019 curriculum mirror. Design and Engineering / Professional Ethics varies by institution between S3 and S4."
+          }),
+          s("s4", "Semester 4", "https://www.scribd.com/document/547733009/B-tech-2019-Curriculum-NEW", [
+            c("MAT202", "Probability, Statistics and Numerical Methods", 4),
+            c("CHT202", "Chemical Engineering Thermodynamics", 4),
+            c("CHT204", "Heat Transfer Operations", 4),
+            c("CHT206", "Particle Technology", 4),
+            c("EST200/HUT200", "Design and Engineering / Professional Ethics", 2, "humanities"),
+            c("MCN202", "Constitution of India", 0, "audit", { gradeMode: "passfail" }),
+            c("CHL202", "Fluid and Particle Mechanics Lab", 2, "lab"),
+            c("CHL204", "Particle Technology Lab", 2, "lab")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to mirrored APJAKTU 2019 Chemical curriculum",
+            sourceNote: "Semester 4 subjects and credits follow the APJAKTU B.Tech 2019 curriculum mirror. Design and Engineering / Professional Ethics varies by institution between S3 and S4."
+          }),
+          s("s5", "Semester 5", "https://www.ktuqbank.com/2020/07/ktu-curriculum-2019-batch-full.html", [
+            c("CHT301", "Mass Transfer Operations-I", 4),
+            c("CHT303", "Environmental Engineering", 4),
+            c("CHT305", "Chemical Reaction Engineering", 4),
+            c("CHT307", "Instrumentation and Process Control", 4),
+            c("HUT300/HUT310", "Industrial Economics and Foreign Trade / Management for Engineers", 3, "humanities"),
+            c("MCN301", "Disaster Management", 0, "audit", { gradeMode: "passfail" }),
+            c("CHL331", "Heat Transfer Operations Lab", 2, "lab"),
+            c("CHL333", "Process Control Lab", 2, "lab")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to 2019 Chemical curriculum table",
+            sourceNote: "Semester 5 subjects and credits match the published 2019 Chemical Engineering curriculum table. HUT300/HUT310 varies by institutional offering order."
+          }),
+          s("s6", "Semester 6", "https://www.ktuqbank.com/2020/07/ktu-curriculum-2019-batch-full.html", [
+            c("CHT302", "Mass Transfer Operations-II", 4),
+            c("CHT304", "Transport Phenomena", 4),
+            c("CHT306", "Chemical Technology", 4),
+            c("CHTXXX", "Elective I", 3, "elective"),
+            c("HUT300/HUT310", "Industrial Economics and Foreign Trade / Management for Engineers", 3, "humanities"),
+            c("CHT308", "Comprehensive Course Work", 1),
+            c("CHL332", "Mass Transfer Operations Lab", 2, "lab"),
+            c("CHL334", "Chemical Reaction Engineering Lab", 2, "lab")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to 2019 Chemical curriculum table",
+            sourceNote: "Semester 6 subjects and credits match the published 2019 Chemical Engineering curriculum table. Elective I remains generic until the student selects the exact elective."
+          }),
+          s("s7", "Semester 7", "https://www.ktuqbank.com/2020/07/chemical-engineering-year-4-syllabus.html", [
+            c("CHT401", "Chemical Process Equipment Design I", 3),
+            c("CHTXXX", "Elective II", 3, "elective"),
+            c("CHTXXX", "Open Elective", 3, "elective"),
+            c("MCN401", "Industrial Safety Engineering", 0, "audit", { gradeMode: "passfail" }),
+            c("CHL411", "Process Simulation Lab", 2, "lab"),
+            c("CHQ413", "Seminar", 2, "project"),
+            c("CHD415", "Project Phase I", 2, "project")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to 2019 Chemical year-four syllabus table",
+            sourceNote: "Semester 7 follows the 2019 Chemical Engineering year-four syllabus table. Elective and open elective rows stay generic because students choose different subjects."
+          }),
+          s("s8", "Semester 8", "https://www.ktuqbank.com/2020/07/chemical-engineering-year-4-syllabus.html", [
+            c("CHT402", "Chemical Process Equipment Design II", 3),
+            c("CHTXXX", "Elective III", 3, "elective"),
+            c("CHTXXX", "Elective IV", 3, "elective"),
+            c("CHTXXX", "Elective V", 3, "elective"),
+            c("CHT404", "Comprehensive Course Viva", 1, "viva"),
+            c("CHD416", "Project Phase II", 4, "project")
+          ], {
+            verification: "secondary",
+            verificationLabel: "Matched to 2019 Chemical year-four syllabus table",
+            sourceNote: "Semester 8 follows the 2019 Chemical Engineering year-four syllabus table. Elective rows stay generic because students choose different subjects."
+          })
         ]
       }
     }
