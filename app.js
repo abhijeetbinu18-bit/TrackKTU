@@ -73,8 +73,7 @@ const GRADES = {
     c("GXEST104", "Introduction to Electrical & Electronics Engineering", 4),
     c("UCEST105", "Algorithmic Thinking with Python", 4),
     c("GXESL106", "Basic Electrical and Electronics Engineering Workshop", 1, "workshop"),
-    c("UCHWT127/UCHUT128", "Health and Wellness / Life Skills and Professional Communication", 1, "humanities", { gradeMode: "passfail" }),
-    c("UCSEM129", "Skill Enhancement Course: Digital 101 (NASSCOM)", 1, "audit", { gradeMode: "passfail" })
+    c("UCHWT127/UCHUT128", "Health and Wellness / Life Skills and Professional Communication", 1, "humanities", { gradeMode: "passfail" })
   ];
 
   const COMMON_2024_A_S2 = [
@@ -95,8 +94,7 @@ const GRADES = {
     c("GXEST104", "Introduction to Electrical & Electronics Engineering", 4),
     c("UCEST105", "Algorithmic Thinking with Python", 4),
     c("GXESL106", "Basic Electrical and Electronics Engineering Workshop", 1, "workshop"),
-    c("UCHWT127/UCHUT128", "Health and Wellness / Life Skills and Professional Communication", 1, "humanities", { gradeMode: "passfail" }),
-    c("UCSEM129", "Skill Enhancement Course: Digital 101 (NASSCOM)", 1, "audit", { gradeMode: "passfail" })
+    c("UCHWT127/UCHUT128", "Health and Wellness / Life Skills and Professional Communication", 1, "humanities", { gradeMode: "passfail" })
   ];
 
   const COMMON_2024_B_S2 = [
@@ -117,8 +115,7 @@ const GRADES = {
     c("GCEST104", "Introduction to Mechanical Engineering & Civil Engineering", 4),
     c("UCEST105", "Algorithmic Thinking with Python", 4),
     c("GCESL106", "Engineering Workshop", 1, "workshop"),
-    c("UCHWT127/UCHUT128", "Health and Wellness / Life Skills and Professional Communication", 1, "humanities", { gradeMode: "passfail" }),
-    c("UCSEM129", "Skill Enhancement Course: Digital 101 (NASSCOM)", 1, "audit", { gradeMode: "passfail" })
+    c("UCHWT127/UCHUT128", "Health and Wellness / Life Skills and Professional Communication", 1, "humanities", { gradeMode: "passfail" })
   ];
 
   const COMMON_2024_C_S2 = [
